@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {{ food.name }}
+    <img src="{{ food.photo.url }}" alt="" width="20%">
+{% endblock %}
