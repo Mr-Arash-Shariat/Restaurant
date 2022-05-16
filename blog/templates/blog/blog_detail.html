@@ -149,7 +149,7 @@
 						<div class="blog-categories">
 							<ul>
 								{% for cat in categories %}
-									<li><a href="#"><span>{{ cat.title }}</span></a></li>
+									<li><a href="{% url 'blog:categories' cat.slug %}"><span>{{ cat.title }}</span></a></li>
 								{% endfor %}
 							</ul>
 						</div>
@@ -177,7 +177,7 @@
 						<div class="blog-tag-box">
 							<ul class="list-inline tag-list">
 								{% for tag in tags %}
-									<li class="list-inline-item"><a href="#">{{ tag }}</a></li>
+									<li class="list-inline-item"><a href="{% url 'blog:tags' tag.slug %}">{{ tag }}</a></li>
 								{% endfor %}
 							</ul>
 						</div>

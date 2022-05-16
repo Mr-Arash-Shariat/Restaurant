@@ -7,10 +7,15 @@ from django.template.defaultfilters import slugify
 
 class Category(models.Model):
     title = models.CharField(max_length=50)
+    slug = models.SlugField(null=True, unique=True, blank=True)
     published_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = "Categories"
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -48,6 +53,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 

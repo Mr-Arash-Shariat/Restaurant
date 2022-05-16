@@ -40,3 +40,23 @@ def blog_detail(request, slug):
     }
 
     return render(request, 'blog/blog_detail.html', context)
+
+
+def blog_tag(request, tag):
+    blog = Blog.objects.filter(tag__slug=tag)
+
+    contaxt = {
+        'blogs': blog
+    }
+
+    return render(request, 'blog/blog_list.html', contaxt)
+
+
+def blog_category(request, category):
+    blog = Blog.objects.filter(category__slug=category)
+
+    context = {
+        'blogs': blog
+    }
+
+    return render(request, 'blog/blog_list.html', context)
