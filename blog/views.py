@@ -66,3 +66,13 @@ def blog_category(request, category):
     }
 
     return render(request, 'blog/blog_list.html', context)
+
+
+def search(request):
+    q = request.GET.get('q')
+    blog = Blog.objects.filter(title__icontains=q)
+    page_number = request.GET.get('page')
+    pagiantor = Paginator(blog, 3)
+    objects_list = pagiantor.get_page(page_number)
+
+    return render(request, "blog/blog_list.html", {"blogs": objects_list})
