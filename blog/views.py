@@ -1,14 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog, Tag, Category, Comment
 from .forms import CommentForm
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 
 def blog_list(request):
-    blogs = Blog.objects.all()
+    blog = Blog.objects.all()
+    # pagination
+    page_number = request.GET.get('page')
+    paginator = Paginator(blog, 3)
+    objects_list = paginator.get_page(page_number)
 
     context = {
-        'blogs': blogs
+        'blogs': objects_list
     }
 
     return render(request, 'blog/blog_list.html', context)

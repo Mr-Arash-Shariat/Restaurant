@@ -32,8 +32,11 @@ class Blog(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ManyToManyField(Category, related_name="blog")
     tag = models.ManyToManyField("Tag", related_name="blog", blank=True, null=True)
-    # comment = models.ManyToOne()
 
+
+    class Meta:
+        ordering = ('created_at',)
+        
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

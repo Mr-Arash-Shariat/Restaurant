@@ -52,6 +52,40 @@
 	</div>
 	<!-- End blog -->
 	
+
+	<!-- Start Pagination -->
+	{% if blogs.has_other_pages %}
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				{% if blogs.has_previous %}
+					<li class="page-item">
+						<a class="page-link" href="?page={{ blogs.previous_page_number }}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				{% endif %}
+
+				{% for i in blogs.paginator.page_range %}
+					{% if blogs.number == i %}
+						<li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+					{% else %}
+						<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+					{% endif %}
+				{% endfor %}
+
+				{% if blogs.has_next %}
+					<li class="page-item">
+						<a class="page-link" href="?page={{ blogs.next_page_number }}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	{% endif %}
+	<!-- End pagination -->
+
+
 	<!-- Start Contact info -->
 	<div class="contact-imfo-box">
 		<div class="container">
