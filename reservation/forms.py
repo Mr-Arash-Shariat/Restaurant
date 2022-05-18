@@ -3,35 +3,36 @@ from .models import Reservation
 
 
 
-class ReservationForm(forms.ModelForm):
-    name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    phone = forms.IntegerField()
+class ReserveForm(forms.ModelForm):
+    # title = forms.CharField(widget=forms.TextInput())
+    # name = forms.CharField(widget=forms.TextInput(attrs={
+    #     "class": "form-control"
+    # }))
 
+    class Meta:
+        model = Reservation
+        fields = ('name', 'email', 'phone')
 
-    # class Meta:
-    #     model = Reservation
-    #     fields = "__all__"
-        
-    #     widgets = {
-    #         "name": forms.TextInput(attrs={
-    #             "placeholder": "Enter your name"
-    #         }),
-    #         "email": forms.EmailInput(attrs={
-    #             "placeholder": "Enter your email"
-    #         }),
-    #         "phone": forms.NumberInput(attrs={
-    #             "placeholder": "Enter your phonenumber"
-    #         })
-    #     }
+        # Special widgets
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "placeholder": "Enter your title..."
+            }),
+            "email": forms.EmailInput(attrs={
+                "placeholder": "Please enter the valid email..."
+            }),
+            "phone": forms.NumberInput(attrs={
+                "placeholder": "Enter the phone..."
+            })
+        }
 
-    
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     for field in self.fields:
-    #         new_data = {
-    #             'class': 'form-control'
-    #         }
-    #         self.fields[str(field)].widget.attrs.update(
-    #             new_data
-    #         )
+    # Widget for all
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            new_data = {
+                "class": "form-control"
+            }
+            self.fields[str(field)].widget.attrs.update(
+                new_data
+            )
