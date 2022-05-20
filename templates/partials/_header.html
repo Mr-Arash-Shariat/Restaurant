@@ -13,13 +13,13 @@
             <div class="collapse navbar-collapse" id="navbars-rs-food">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="{% url 'foods:food_list' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'foods:menu' %}">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about_us:about' %}">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown-a">
                             <a class="dropdown-item" href="{% url 'reservation:reserve' %}">Reservation</a>
-                            <a class="dropdown-item" href="stuff.html">Stuff</a>
+                            <a class="dropdown-item" href="{%  %}">Stuff</a>
                             <a class="dropdown-item" href="gallery.html">Gallery</a>
                         </div>
                     </li>
