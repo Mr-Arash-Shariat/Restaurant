@@ -13,6 +13,16 @@ def food_list(request):
     return render(request, 'foods/list.html', context)
 
 
+def menu(request):
+    menu = Food.objects.all()
+
+    context = {
+        'menu': menu,
+    }
+
+    return render(request, 'foods/menu.html', context)
+
+
 def food_detail(request, pk):
     foods = Food.objects.get(id=pk)
 

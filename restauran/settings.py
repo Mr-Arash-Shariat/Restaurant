@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'foods.apps.FoodsConfig',
     'reservation.apps.ReservationConfig',
     'blog.apps.BlogConfig',
+    'about_us.apps.AboutUsConfig',
+    'contact_us.apps.ContactUsConfig'
 ]
 
 MIDDLEWARE = [
