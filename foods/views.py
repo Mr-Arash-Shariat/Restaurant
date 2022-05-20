@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Food
+from .models import Food, Stuff
 
 
 
@@ -21,6 +21,14 @@ def menu(request):
     }
 
     return render(request, 'foods/menu.html', context)
+
+
+def stuff(request):
+    stuff = Stuff.objects.all()
+    context = {    
+        'stuff': stuff
+    }
+    return render(request, 'foods/stuff.html', context)
 
 
 def food_detail(request, pk):
